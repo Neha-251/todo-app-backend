@@ -3,7 +3,7 @@ const router = express.Router();
 const Todo = require("../models/todo.model");
 
 
-router.get("/", async(req, res) => {
+router.get("", async(req, res) => {
     try{
         const todos = await Todo.find().lean().exec();
 
@@ -17,7 +17,7 @@ router.get("/", async(req, res) => {
 router.post("/", async(req, res) => {
     try{
         const todos = await Todo.create(req.body);
-        return res.status(201).send(item);
+        return res.status(201).send(todos);
     }
     catch(err) {
         return res.status(500).send({message: err})
