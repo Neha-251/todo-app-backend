@@ -3,7 +3,7 @@ const router = express.Router();
 const Todo = require("../models/todo.model");
 
 
-router.get("", async(req, res) => {
+router.get("/", async(req, res) => {
     try{
         const todos = await Todo.find().lean().exec();
 
