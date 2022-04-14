@@ -24,4 +24,15 @@ router.post("/", async(req, res) => {
     }
 });
 
+router.delete("/:id", async(req,res)=>{
+    try {
+        const todo = await Todo.findByIdAndDelete(req.params.id, req.body).lean().exec();
+        return res.status(201).send({"todo":todo});
+    } catch (error) {
+        return res.status(500).send({message: error.message});
+    }
+});
+
+
+
 module.exports = router;
